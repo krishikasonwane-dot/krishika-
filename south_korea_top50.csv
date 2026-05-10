@@ -1,0 +1,42 @@
+date,position,song,artist,popularity,duration_ms,album_type,total_tracks,is_explicit
+2026-01-01,1,Supernova,aespa,95,210000,album,10,False
+2026-01-01,2,Magnetic,ILLIT,93,185000,single,1,False
+2026-01-01,3,Perfect Night,LE SSERAFIM,91,198000,single,1,False
+2026-01-01,4,Drama,aespa,90,205000,album,10,False
+2026-01-01,5,EASY,LE SSERAFIM,89,200000,single,1,False
+
+2026-01-02,1,Magnetic,ILLIT,94,185000,single,1,False
+2026-01-02,2,Supernova,aespa,95,210000,album,10,False
+2026-01-02,3,Perfect Night,LE SSERAFIM,92,198000,single,1,False
+2026-01-02,4,Drama,aespa,91,205000,album,10,False
+2026-01-02,5,EASY,LE SSERAFIM,88,200000,single,1,False
+
+2026-01-03,1,Perfect Night,LE SSERAFIM,93,198000,single,1,False
+2026-01-03,2,Magnetic,ILLIT,94,185000,single,1,False
+2026-01-03,3,Supernova,aespa,95,210000,album,10,False
+2026-01-03,4,Drama,aespa,92,205000,album,10,False
+2026-01-03,5,EASY,LE SSERAFIM,89,200000,single,1,False
+
+2026-01-05,1,Supernova,aespa,96,210000,album,10,False
+2026-01-05,2,Drama,aespa,93,205000,album,10,False
+2026-01-05,3,Magnetic,ILLIT,93,185000,single,1,False
+2026-01-05,4,Perfect Night,LE SSERAFIM,92,198000,single,1,False
+2026-01-05,5,EASY,LE SSERAFIM,90,200000,single,1,False
+
+2026-01-07,1,Supernova,aespa,97,210000,album,10,False
+2026-01-07,2,Magnetic,ILLIT,95,185000,single,1,False
+2026-01-07,3,Perfect Night,LE SSERAFIM,94,198000,single,1,False
+2026-01-07,4,Drama,aespa,92,205000,album,10,False
+2026-01-07,5,Smart,LE SSERAFIM,88,190000,single,1,False
+
+2026-01-10,1,Magnetic,ILLIT,96,185000,single,1,False
+2026-01-10,2,Supernova,aespa,95,210000,album,10,False
+2026-01-10,3,Drama,aespa,93,205000,album,10,False
+2026-01-10,4,Perfect Night,LE SSERAFIM,92,198000,single,1,False
+2026-01-10,5,Smart,LE SSERAFIM,89,190000,single,1,False
+
+2026-01-15,1,Supernova,aespa,98,210000,album,10,False
+2026-01-15,2,Magnetic,ILLIT,95,185000,single,1,False
+2026-01-15,3,Drama,aespa,94,205000,album,10,False
+2026-01-15,4,Perfect Night,LE SSERAFIM,93,198000,single,1,False
+2026-01-15,5,Smart,LE SSERAFIM,90,190000,single,1,False
