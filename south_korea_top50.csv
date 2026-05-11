@@ -40,3 +40,9 @@ date,position,song,artist,popularity,duration_ms,album_type,total_tracks,is_expl
 2026-01-15,3,Drama,aespa,94,205000,album,10,False
 2026-01-15,4,Perfect Night,LE SSERAFIM,93,198000,single,1,False
 2026-01-15,5,Smart,LE SSERAFIM,90,190000,single,1,False
+
+2026-01-01,6,Dynamite,BTS,97,199000,single,1,False
+2026-01-01,7,Butter,BTS,96,164000,single,1,False
+2026-01-01,8,Spring Day,BTS,95,269000,album,14,False
+2026-01-01,9,IDOL,BTS,94,202000,album,11,False
+2026-01-01,10,LOVE DIVE,IVE,93,177000,single,1,False
