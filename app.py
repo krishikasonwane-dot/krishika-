@@ -28,13 +28,23 @@ def load_data(file):
     return df
 
 
-file = st.file_uploader("📂 Upload CSV file", type=["csv"])
+uploaded_file = st.file_uploader("📂 Upload CSV file", type=["csv"])
 
-if file is None:
-    st.info("Upload dataset to continue")
-    st.stop()
+if uploaded_file:
+    df = load_data(uploaded_file)
+else:
+    st.warning("Using default demo dataset")
 
-df = load_data(file)
+    df = pd.DataFrame([
+        ["2026-01-01", 1, "Demo Song", "BTS", 90, 200000, "single", 1, False]
+    ], columns=[
+        "date","position","song","artist","popularity",
+        "duration_ms","album_type","total_tracks","is_explicit"
+    ])
+
+    df['date'] = pd.to_datetime(df['date'])
+
+ 
 
 # ---------------- EXTRA BTS DATA (FIXED STRUCTURE) ----------------
 extra_data = pd.DataFrame([
@@ -105,7 +115,11 @@ st.plotly_chart(fig2, use_container_width=True)
 # ---------------- MOMENTUM ----------------
 st.subheader("⚡ Momentum Score")
 
+# 🔥 SAFE FIX (ENSURE COLUMN EXISTS)
+filtered['song_id'] = filtered['song'] + "_" + filtered['artist']
+
 momentum = filtered.copy()
+
 momentum = momentum.sort_values(['song_id', 'date'])
 
 momentum['prev_position'] = momentum.groupby('song_id')['position'].shift(1)
@@ -115,8 +129,11 @@ momentum['momentum_score'] = momentum['rank_change'].fillna(0)
 
 top = momentum.groupby(['song', 'artist'])['momentum_score'].mean().reset_index()
 
-fig3 = px.bar(top.sort_values('momentum_score', ascending=False).head(10),
-              x='song', y='momentum_score')
+fig3 = px.bar(
+    top.sort_values('momentum_score', ascending=False).head(10),
+    x='song',
+    y='momentum_score'
+)
 
 st.plotly_chart(fig3, use_container_width=True)
 
@@ -137,25 +154,18 @@ st.plotly_chart(fig4, use_container_width=True)
 
 # ---------------- RE-ENTRY (FIXED .dt ERROR) ----------------
 st.subheader("🔄 Re-Entry Detection")
+st.subheader("🔄 Re-Entry Detection")
 
-# FORCE GLOBAL FIX
 filtered['date'] = pd.to_datetime(filtered['date'], errors='coerce')
 
 reentry = []
 
 for song_id, group in filtered.groupby('song_id'):
-
     group = group.sort_values('date')
 
-    # 🔥 IMPORTANT FIX: force datetime again inside group
-    group['date'] = pd.to_datetime(group['date'], errors='coerce')
+    gaps = group['date'].diff().dt.days.fillna(0)
 
-    gaps = group['date'].diff()
-
-    # safe conversion (NO .dt crash now)
-    gaps_days = gaps.apply(lambda x: x.days if pd.notnull(x) else 0)
-
-    reentry_count = (gaps_days > 1).sum()
+    reentry_count = (gaps > 1).sum()
 
     reentry.append({
         "song": group['song'].iloc[0],
@@ -166,6 +176,7 @@ for song_id, group in filtered.groupby('song_id'):
 reentry_df = pd.DataFrame(reentry)
 
 st.dataframe(reentry_df.sort_values('reentry_count', ascending=False))
+
 # ---------------- TREND LABEL ----------------
 st.subheader("📈 Trend Classification")
 
